@@ -1,0 +1,297 @@
+:root {
+  color-scheme: light dark;
+  --text: #1c1c1e;
+  --muted: #5a5a60;
+  --accent: #1f6bc4;
+  --surface: #ffffff;
+  --background: #f2f2f7;
+  --border: #d8d8de;
+  --tile: #e7f0fb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #f2f2f7;
+    --muted: #a1a1aa;
+    --accent: #3987e5;
+    --surface: #1c1c1e;
+    --background: #000000;
+    --border: #38383c;
+    --tile: #1b2a3d;
+  }
+}
+
+body {
+  margin: 0;
+  font:
+    17px/1.55 -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  color: var(--text);
+  background: var(--background);
+}
+
+main {
+  max-width: 44rem;
+  margin: 2rem auto;
+  padding: 1.5rem 2rem 2rem;
+  background: var(--surface);
+  border-radius: 16px;
+}
+
+main.wide {
+  max-width: 64rem;
+}
+
+nav {
+  max-width: 64rem;
+  margin: 1.5rem auto 0;
+  padding: 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1.25rem;
+}
+
+nav .brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: auto;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+
+nav .brand img {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+}
+
+nav a[aria-current="page"] {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer {
+  max-width: 64rem;
+  margin: 0 auto 2rem;
+  padding: 0 2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+footer a {
+  margin-right: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+h2 {
+  margin-top: 2rem;
+  font-size: 1.25rem;
+}
+
+a {
+  color: var(--accent);
+}
+
+.updated,
+.muted {
+  color: var(--muted);
+}
+
+/* Introduction */
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hero img {
+  width: 96px;
+  height: 96px;
+  border-radius: 22px;
+  flex-shrink: 0;
+}
+
+.hero h1 {
+  margin: 0;
+}
+
+.hero p {
+  margin: 0.25rem 0 0;
+  font-size: 1.2rem;
+  color: var(--muted);
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.features li {
+  padding: 1rem 1.25rem;
+  background: var(--tile);
+  border-radius: 12px;
+}
+
+.features h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+}
+
+.features p {
+  margin: 0;
+}
+
+/* Screenshots */
+
+.device-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.device-tabs button {
+  font: inherit;
+  padding: 0.35rem 1rem;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.device-tabs button[aria-selected="true"] {
+  color: #ffffff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.gallery {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+  scroll-snap-type: x mandatory;
+}
+
+.gallery[hidden] {
+  display: none;
+}
+
+.gallery figure {
+  margin: 0;
+  flex: 0 0 auto;
+  width: min-content;
+  scroll-snap-align: start;
+  text-align: center;
+}
+
+.gallery img {
+  display: block;
+  height: 26rem;
+  width: auto;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  cursor: zoom-in;
+}
+
+.gallery[data-device="ipad"] img,
+.gallery[data-device="mac"] img {
+  height: 20rem;
+}
+
+.gallery figcaption {
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.device-heading {
+  margin-bottom: 0;
+  font-size: 1.05rem;
+}
+
+.js .device-heading {
+  display: none;
+}
+
+/* Full-screen viewer */
+
+.viewer {
+  max-width: 96vw;
+  max-height: 96vh;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+.viewer::backdrop {
+  background: rgb(0 0 0 / 0.85);
+}
+
+.viewer img {
+  display: block;
+  max-width: 94vw;
+  max-height: 88vh;
+  border-radius: 14px;
+}
+
+.viewer p {
+  margin: 0.5rem 0 0;
+  color: #ffffff;
+  text-align: center;
+}
+
+.viewer button {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  font: inherit;
+  font-size: 1.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  color: #ffffff;
+  background: rgb(255 255 255 / 0.15);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+@media (max-width: 40rem) {
+  main {
+    margin: 1rem;
+    padding: 1rem 1.25rem;
+  }
+
+  nav,
+  footer {
+    padding: 0 1.25rem;
+  }
+
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .gallery img {
+    height: 22rem;
+  }
+
+  .gallery[data-device="ipad"] img,
+  .gallery[data-device="mac"] img {
+    height: 14rem;
+  }
+}
